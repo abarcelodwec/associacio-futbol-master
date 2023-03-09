@@ -1,0 +1,52 @@
+.seleccionada{
+
+  background-color: rgb(136, 206, 31) !important;
+  
+  
+}
+
+.apuesta1:hover, .apuestax:hover, .apuesta2:hover {
+  
+  cursor: pointer;
+  transform: scale(1.2);
+  border-color: rgb(136, 206, 31);
+  border-width: 2px;
+
+}
+
+td {
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 70px 0;
+}
+
+.escudosquiniela{
+
+  height: 30px;
+
+}
+.escudosjornada{
+
+  height: 50px;
+
+}
+
+tr {
+
+  height:50px;
+
+}
+
+.card-text{
+
+  height: 130px;
+
+}
+
+#tablaEquipos{
+
+  cursor: pointer;
+
+
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quinielas</title>
+  <!--       Fulla d'estils de bootstrap-->
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+
+  <!--       Favicon per pestanya del navegador-->
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="scripts/datos.js"></script>
+  <script src="scripts/constructores.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container w-50">
+        <h2>Asociación Amigos del Fútbol</h2>
+        <form class="d-flex justify-content-end">
+          <input type="search" class="form-control" name="q" placeholder="Cerca..." />
+          <input type="submit" value="cerca" />
+        </form>
+      </div>
+    </nav>
+    <div class="container-flex">
+      <img src="img/Logo2.jpg" class="img-fluid mx-auto d-block" alt="Logo" />
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container w-50">
+      <a class="navbar-brand" href="index.html"><img src="img/brand.png" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Equipos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="/associacio-futbol-master/equipos_masc.html">Masculinos</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/associacio-futbol-master/equipos_fem.html">Femeninos</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Jornadas
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="jornades_masc.html">Masculino</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="jornades_fem.html">Femenino</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="travesses.html">Quinielas</a>
+          </li>
+        </ul>
+        <a class="btn btn-light" data-bs-toggle="offcanvas" href="#eines" role="button" id="btnHerramientas"
+          aria-controls="eines" onclick="quinielaSelector()">
+          Herramientas
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- Aquest és el contingut principal de la nostra pàgina -->
+  <main class="p-3 mb-2 bg-light text-dark">
+    <article>
+      <div class="container w-50">
+        <h2 id="tituloQuiniela"></h2>
+
+        <div class="row">
+          <div class="col-7">
+            <!-- Tabla de los partidos -->
+            <table class="table table-bordered table-striped align-middle" style="table-layout: fixed; width: 100%;"
+              id="quinielas">
+              <thead id="thQuinielas"></thead>
+              <tbody id="tbQuinielas"></tbody>
+            </table>
+          </div>
+          <div class="col-3">
+            <!-- Tabla de las apuestas -->
+            <table class="table table-bordered table-striped align-middle" style="text-align: center;"
+              id="tablaApuestas">
+              <thead id="thApuestas"></thead>
+              <tbody id="tbApuestas"></tbody>
+            </table>
+            <div class="d-grid gap-2">
+
+              <button type="button" class="btn btn-secondary mb-2" id="btnSuerte" hidden>¿Quieres
+                suerte?</button>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-secondary" id="btnVerificar" hidden disabled>¡Verifica!</button>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <!-- Tabla de los resultados -->
+            <table class="table table-borderless" style="text-align: center;" id="tablaResultados">
+              <thead id="thResultados"></thead>
+              <tbody id="tbResultados"></tbody>
+            </table>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+
+              <h1 id="aciertos"></h1>
+
+            </div>
+          </div>
+        </div>
+    </article>
+
+  </main>
+
+  <!-- OffCanvas Eines -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="eines" aria-labelledby="einesLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="einesLabel">HERRAMIENTAS</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        <div class="border mt-3 p-2">
+          <h4>Jornadas AAF en Local</h4>
+          <button class="btn btn-secondary mt-2 mb-2" type="submit" id="btnGenerarJornadas">
+            Crear con datos locales</button>
+          <h4>Jornadas con API</h4>
+          <button class="btn btn-secondary mt-2" type="submit" id="btnDescargarJornadasAPI">
+            Descargar de www.api-football.com</button>
+          <button class="btn btn-secondary mt-2" type="submit" id="btnGenerarJornadasAPI" disabled>
+            Crear con datos de www.api-football.com</button>
+        </div>
+        <div class="border mt-3 p-2">
+          <h4>Quinielas</h4>
+          <label for="quinielaSelect">Selecciona la jornada que quieres hacer la quiniela</label>
+          <select class="form-select mt-2 mb-2" id="quinielaSelect">
+            <option>
+              No hay ninguna jornada creada.
+            </option>
+          </select>
+          <button class="btn btn-secondary form-control"
+            onclick="mostrarQuiniela(document.getElementById('quinielaSelect').value);" id="btnCrearQuiniela"
+            data-bs-dismiss="offcanvas" disabled>
+            Crear
+          </button>
+        </div>
+        <div class="border mt-3 p-2">
+          <h4>Reset</h4>
+          <label for="btnBorrar">Borrar los datos del LocalStorage</label>
+          <button class="btn btn-danger form-control mt-2" id="btnBorrar">
+            Borrar
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+  <script src="scripts/quinielas.js"></script>
+  <script src="scripts/crearJornadas.js"></script>
+  <script src="scripts/crearJornadasAPI.js"></script>
+  <script src="scripts/funciones.js"></script>
+</body>
+  <footer>
+    <p>Toni Barceló :: DWEC :: DAW :: 22/23</p>
+  </footer>
+
+</html>

@@ -1,0 +1,65 @@
+https://dashboard.api-football.com/login
+
+
+api key: e6ed9cdcfc5bcaf1149ec8d3677f9bcb
+
+
+
+Saber cuantos goles
+
+let goles = [];
+    // goles.push(localStorageJornadas.response[0].goals.home)
+
+    for (let i = 0; i < localStorageJornadas.response.length; i++) {
+
+        goles.push(localStorageJornadas.response[i].goals.home)
+        goles.push(localStorageJornadas.response[i].goals.away)
+
+    }
+
+    // console.log(count);
+
+    let cero = 0;
+    let uno = 0;
+    let dos = 0;
+    let tres = 0;
+    let cuatro = 0;
+    let cinco = 0;
+    let seis = 0;
+    let siete = 0;
+    let ocho = 0;
+    let nueve = 0;
+    let diez = 0;
+    let otros = 0;
+    for (let i = 0; i < goles.length; i++) {
+
+        if (goles[i] == 0) { cero++; }
+        else if (goles[i] == 1) { uno++; }
+        else if (goles[i] == 2) { dos++; }
+        else if (goles[i] == 3) { tres++; }
+        else if (goles[i] == 4) { cuatro++; }
+        else if (goles[i] == 5) { cinco++; }
+        else if (goles[i] == 6) { seis++; }
+        else if (goles[i] == 7) { siete++; }
+        else if (goles[i] == 8) { ocho++; }
+        else if (goles[i] == 9) { nueve++; }
+        else if (goles[i] == 10) { diez++; }
+        else { otros++ }
+
+    }
+
+    console.log(cero + " " + Math.round(cero*100/740) + "%");
+    console.log(uno + " " + Math.round(uno*100/740) + "%");
+    console.log(dos + " " + Math.round(dos*100/740) + "%");
+    console.log(tres + " " + Math.round(tres*100/740) + "%");
+    console.log(cuatro + " " + Math.round(cuatro*100/740) + "%");
+    console.log(cinco + " " + Math.round(cinco*100/740) + "%");
+    console.log(seis + " " + Math.round(seis*100/740) + "%");
+    console.log(siete);
+    console.log(ocho);
+    console.log(nueve);
+    console.log(diez);
+    console.log(otros);
+
+
+
